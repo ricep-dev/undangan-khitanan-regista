@@ -1,0 +1,748 @@
+/* ===== APP ===== */
+.app {
+  min-height: 100vh;
+  position: relative;
+}
+
+.main-content {
+  animation: fadeInUp 0.6s ease;
+}
+
+/* ==========================================================================
+   COVER SCREEN
+   Lapisan (bawah ke atas):
+   gradient bergerak > pola bintang-8 > mandala berputar > bintang, bulan sabit,
+   lampion, partikel, siluet masjid > konten > ornamen sudut
+   ========================================================================== */
+.cover-screen {
+  min-height: 100vh;
+  min-height: 100svh;
+  background: linear-gradient(145deg, #0a3524 0%, #0f5a3e 52%, #2c8a64 130%);
+  background-size: 170% 170%;
+  animation: cvBg 20s ease-in-out infinite alternate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px clamp(110px, 18vh, 170px);
+}
+
+/* Pola geometris bintang-8 yang bergeser pelan */
+.cover-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cg fill='none' stroke='%23e2b93f' stroke-width='1'%3E%3Crect x='22' y='22' width='46' height='46'/%3E%3Crect x='22' y='22' width='46' height='46' transform='rotate(45 45 45)'/%3E%3Ccircle cx='45' cy='45' r='10'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 90px 90px;
+  opacity: 0.1;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 15%, transparent 78%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 15%, transparent 78%);
+  animation: cvPatternDrift 26s linear infinite;
+}
+
+.cover-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 85%, rgba(201,168,76,0.12) 0%, transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(201,168,76,0.12) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Wadah semua dekorasi latar */
+.cover-decor {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ----- Mandala berputar ----- */
+.cover-mandala {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: var(--size);
+  height: var(--size);
+  margin: calc(var(--size) / -2) 0 0 calc(var(--size) / -2);
+  color: #e2b93f;
+}
+
+.cover-mandala--outer {
+  --size: min(150vw, 820px);
+  opacity: 0.16;
+  animation: cvSpin 140s linear infinite;
+}
+
+.cover-mandala--inner {
+  --size: min(100vw, 540px);
+  opacity: 0.2;
+  animation: cvSpin 90s linear infinite reverse;
+}
+
+/* ----- Bintang berkelip ----- */
+.cover-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff4c2;
+  box-shadow: 0 0 6px 1px rgba(255, 244, 194, 0.8);
+  opacity: 0.2;
+  animation: cvTwinkle 3s ease-in-out infinite;
+}
+
+/* ----- Bulan sabit ----- */
+.cover-moon {
+  position: absolute;
+  top: 5%;
+  right: 27%;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  box-shadow: inset -11px -4px 0 0 #f4d05a;
+  filter: drop-shadow(0 0 10px rgba(244, 208, 90, 0.7));
+  animation: cvFloat 7s ease-in-out infinite;
+}
+
+/* ----- Lampion berayun ----- */
+.lantern {
+  position: absolute;
+  top: 0;
+  width: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: 50% 0;
+  animation: cvSwing var(--dur, 5s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+
+.lantern-chain {
+  width: 1px;
+  height: var(--chain, 50px);
+  background: linear-gradient(#e2b93f, rgba(226, 185, 63, 0.4));
+}
+
+.lantern svg {
+  width: 38px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 0 10px rgba(244, 208, 90, 0.55));
+}
+
+.lantern-flame {
+  fill: #ffe58a;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: cvFlame 1.6s ease-in-out infinite alternate;
+}
+
+.lantern--1 { left: 11%; }
+.lantern--2 { right: 11%; }
+
+/* Lampion tambahan hanya di layar lebar */
+.lantern--3,
+.lantern--4 { display: none; }
+
+@media (min-width: 700px) {
+  .lantern--3 { display: flex; left: 24%; }
+  .lantern--4 { display: flex; right: 24%; }
+}
+
+/* ----- Partikel emas naik ----- */
+.cover-particle {
+  position: absolute;
+  bottom: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffe58a, rgba(244, 208, 90, 0));
+  opacity: 0;
+  animation: cvRiseUp linear infinite;
+}
+
+/* ----- Siluet masjid ----- */
+.cover-mosque {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(100px, 17vh, 160px);
+}
+
+.cover-mosque::before {
+  content: '';
+  position: absolute;
+  inset: -40% 0 0;
+  background: radial-gradient(ellipse 60% 70% at 50% 100%, rgba(244, 208, 90, 0.28), transparent 70%);
+  animation: cvGlow 5s ease-in-out infinite;
+}
+
+.cover-mosque svg {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 -4px 12px rgba(244, 208, 90, 0.2));
+}
+
+.mosque-body { fill: #06281c; }
+
+.mosque-window {
+  fill: #f4d05a;
+  opacity: 0.55;
+  animation: cvWindow 4s ease-in-out infinite;
+}
+
+/* Ornamen sudut */
+.corner {
+  position: absolute;
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+  border-color: rgba(201,168,76,0.4);
+  border-style: solid;
+}
+
+.corner-tl { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
+.corner-tr { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
+.corner-bl { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
+.corner-br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
+
+/* ===== Konten cover ===== */
+.cover-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Satu rangkaian animasi masuk: elemen muncul berurutan dari atas ke bawah */
+.cover-content > * {
+  animation: cvRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.cover-content > *:nth-child(1)  { animation-delay: 0.05s; }
+.cover-content > *:nth-child(2)  { animation-delay: 0.12s; }
+.cover-content > *:nth-child(3)  { animation-delay: 0.2s; }
+.cover-content > *:nth-child(4)  { animation-delay: 0.3s; }
+.cover-content > *:nth-child(5)  { animation-delay: 0.38s; }
+.cover-content > *:nth-child(6)  { animation-delay: 0.44s; }
+.cover-content > *:nth-child(7)  { animation-delay: 0.5s; }
+.cover-content > *:nth-child(8)  { animation-delay: 0.56s; }
+.cover-content > *:nth-child(9)  { animation-delay: 0.62s; }
+.cover-content > *:nth-child(10) { animation-delay: 0.7s; }
+.cover-content > *:nth-child(11) { animation-delay: 0.78s; }
+
+/* Basmalah: letter-spacing 0 supaya huruf Arab tetap tersambung */
+.cover-top {
+  font-size: clamp(1.7rem, 5.5vw, 2.3rem);
+  color: var(--gold-light);
+  font-family: 'Amiri', 'Scheherazade New', 'Noto Naskh Arabic', serif;
+  letter-spacing: 0;
+  line-height: 1.6;
+  text-shadow: 0 0 18px rgba(244, 208, 90, 0.45);
+}
+
+.cover-label {
+  font-size: clamp(0.72rem, 2vw, 0.82rem);
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* Photo */
+.cover-photo {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 8px 0;
+}
+
+/* Cahaya lembut di belakang foto */
+.cover-photo::before {
+  content: '';
+  position: absolute;
+  inset: -34px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 208, 90, 0.35), transparent 68%);
+  animation: cvGlow 4s ease-in-out infinite;
+}
+
+.cover-photo-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 30px rgba(201,168,76,0.3);
+}
+
+/* Foto Regista pada halaman sampul */
+.cover-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
+  background: #185b43;
+}
+
+.cover-photo-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: scale(1.28);
+  background: linear-gradient(145deg, #dff3e6 0%, #58b984 42%, #0d573b 100%);
+  border-radius: 50%;
+}
+
+/* Cincin berdenyut: keyframe sendiri agar tetap rapat di tengah foto */
+.cover-photo-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.3);
+  animation: cvRing 3.2s ease-in-out infinite;
+}
+
+.ring1 {
+  width: 182px;
+  height: 182px;
+  animation-delay: 0s;
+}
+
+.ring2 {
+  width: 206px;
+  height: 206px;
+  animation-delay: 0.6s;
+  border-color: rgba(201,168,76,0.18);
+}
+
+/* Name: kilau emas menyapu sesekali */
+.cover-name {
+  font-size: clamp(3.5rem, 12vw, 6rem);
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 4px;
+  line-height: 1;
+  margin: 4px 0;
+  background: linear-gradient(100deg, #fff 0%, #fff 38%, #f7e29a 50%, #fff 62%, #fff 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.35));
+  animation:
+    cvRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.38s backwards,
+    cvShine 6s ease-in-out 1.6s infinite;
+}
+
+.cover-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 280px;
+  margin: 4px 0;
+}
+
+.cover-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.cover-ornament {
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+
+/* Guest info */
+.cover-from {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.cover-guest {
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.cover-guest-name {
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.cover-date {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  background: rgba(201,168,76,0.12);
+  border: 1px solid var(--border-gold);
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin: 4px 0;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Open button */
+.cover-open-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--green-dark);
+  padding: 14px 40px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(201,168,76,0.4);
+  animation:
+    cvRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.7s backwards,
+    cvBtnGlow 2.6s ease-in-out 1.6s infinite;
+}
+
+/* Kilau yang menyapu tombol */
+.cover-open-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  z-index: -1;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-20deg);
+  animation: cvSweep 3.4s ease-in-out 1.8s infinite;
+}
+
+.cover-open-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(201,168,76,0.55);
+}
+
+.cover-open-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.cover-open-btn:focus-visible {
+  outline: 2px solid #fff4c2;
+  outline-offset: 4px;
+}
+
+.btn-text {
+  letter-spacing: 0.5px;
+}
+
+.btn-icon {
+  font-size: 1.1rem;
+}
+
+.cover-footer {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Transisi saat undangan dibuka */
+.cover-screen--closing {
+  animation: cvLeave 0.65s ease forwards;
+  pointer-events: none;
+}
+
+/* ===== SCROLL TO TOP ===== */
+.scroll-top-btn {
+  position: fixed;
+  right: 22px;
+  bottom: 82px;
+  z-index: 1000;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #e8ca66;
+  border-radius: 50%;
+  background: #145740;
+  color: #f3d266;
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.3s ease;
+}
+
+.scroll-top-btn:hover {
+  background: #f3d266;
+  color: #145740;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(201,168,76,0.5);
+}
+
+/* ===== FLOATING MUSIC ===== */
+.floating-music {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e8ca66;
+  border-radius: 50%;
+  background: #145740;
+  color: #f3d266;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  animation: pulse 2s ease-in-out infinite;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.floating-music:hover {
+  transform: scale(1.08);
+}
+
+.floating-music.music-playing {
+  background: #f3d266;
+  color: #145740;
+}
+
+.music-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* ===== SHARED UTILITY (used in multiple sections) ===== */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--gold);
+  margin: 0 auto;
+}
+
+.gold-divider .line {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-subtitle {
+  font-size: 0.78rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  color: var(--white);
+  margin-bottom: 14px;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--green-dark);
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(201,168,76,0.4);
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.5);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--green-dark);
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(201,168,76,0.35);
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.5);
+}
+
+.event-intro {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 12px auto 0;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   KEYFRAMES COVER (nama diawali "cv" agar tidak bentrok dengan animasi global)
+   ========================================================================== */
+@keyframes cvBg {
+  from { background-position: 0% 0%; }
+  to   { background-position: 100% 100%; }
+}
+
+@keyframes cvPatternDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 90px 90px; }
+}
+
+@keyframes cvSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes cvTwinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50%      { opacity: 1;    transform: scale(1.25); }
+}
+
+@keyframes cvFloat {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50%      { transform: translateY(-7px) rotate(4deg); }
+}
+
+@keyframes cvSwing {
+  from { transform: rotate(-5deg); }
+  to   { transform: rotate(5deg); }
+}
+
+@keyframes cvFlame {
+  from { opacity: 0.75; transform: scaleY(0.9); }
+  to   { opacity: 1;    transform: scaleY(1.08); }
+}
+
+@keyframes cvRiseUp {
+  0%   { opacity: 0; transform: translate(0, 0); }
+  10%  { opacity: 0.85; }
+  90%  { opacity: 0.6; }
+  100% { opacity: 0; transform: translate(var(--drift, 20px), -105vh); }
+}
+
+@keyframes cvWindow {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 0.95; }
+}
+
+@keyframes cvGlow {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+
+@keyframes cvRing {
+  0%, 100% { opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 0.35; transform: translate(-50%, -50%) scale(1.07); }
+}
+
+@keyframes cvRise {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cvShine {
+  0%, 40% { background-position: 100% 0; }
+  100%    { background-position: 0% 0; }
+}
+
+@keyframes cvBtnGlow {
+  0%, 100% { box-shadow: 0 6px 20px rgba(201,168,76,0.4), 0 0 0 0 rgba(244,208,90,0.45); }
+  50%      { box-shadow: 0 8px 26px rgba(201,168,76,0.55), 0 0 0 12px rgba(244,208,90,0); }
+}
+
+@keyframes cvSweep {
+  0%       { left: -60%; }
+  45%, 100% { left: 130%; }
+}
+
+@keyframes cvLeave {
+  to { opacity: 0; transform: scale(1.08); filter: blur(6px); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .corner { width: 40px; height: 40px; }
+  .corner-tl, .corner-tr { top: 10px; }
+  .corner-bl, .corner-br { bottom: 10px; }
+  .corner-tl, .corner-bl { left: 10px; }
+  .corner-tr, .corner-br { right: 10px; }
+}
+
+/* Tampilan mobile */
+@media (max-width: 600px) {
+  .floating-music {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .scroll-top-btn {
+    right: 18px;
+    bottom: 75px;
+  }
+}
+
+/* Hormati preferensi "kurangi gerakan" */
+@media (prefers-reduced-motion: reduce) {
+  .cover-screen,
+  .cover-screen::before,
+  .cover-screen *,
+  .cover-screen *::before,
+  .cover-screen *::after {
+    animation: none !important;
+  }
+
+  .cover-particle { display: none; }
+}

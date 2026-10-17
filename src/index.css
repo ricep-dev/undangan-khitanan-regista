@@ -1,0 +1,300 @@
+/* ===== GLOBAL RESET & BASE STYLES ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green-dark: #1a4a2e;
+  --green-primary: #1e5c38;
+  --green-medium: #2d7a4f;
+  --green-light: #3a9663;
+  --green-pale: #4db87a;
+  --gold: #c9a84c;
+  --gold-light: #e8c870;
+  --gold-dark: #a07830;
+  --white: #ffffff;
+  --cream: #faf8f0;
+  --text-light: rgba(255,255,255,0.85);
+  --text-muted: rgba(255,255,255,0.6);
+  --border-gold: rgba(201, 168, 76, 0.4);
+  --shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--green-primary);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--green-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 3px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes countdown-tick {
+  0% { transform: rotateX(0deg); }
+  50% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0deg); }
+}
+
+/* Layout refinements for tablet and phone screens */
+@media (max-width: 820px) {
+  .mobile-menu {
+    width: min(280px, 86vw);
+    height: 100dvh;
+  }
+
+  .hero-section,
+  .couple-section,
+  .gallery-section,
+  .event-section,
+  .entertain-section,
+  .schedule-section,
+  .giftrsvp-section {
+    padding-left: clamp(14px, 4vw, 24px);
+    padding-right: clamp(14px, 4vw, 24px);
+  }
+
+  .info-card,
+  .rsvp-card,
+  .gift-card {
+    padding: clamp(20px, 4vw, 32px);
+  }
+
+  .event-cards,
+  .entertain-grid,
+  .giftrsvp-container {
+    gap: clamp(14px, 3vw, 24px);
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+
+  .section-header {
+    margin-bottom: 28px;
+  }
+
+  .section-title {
+    font-size: clamp(1.55rem, 7vw, 2rem);
+    line-height: 1.25;
+  }
+
+  .section-subtitle {
+    letter-spacing: 2px;
+  }
+
+  .hero-section {
+    min-height: 100svh;
+    padding-top: 86px;
+  }
+
+  .hero-tag {
+    max-width: 100%;
+    letter-spacing: 1px;
+    font-size: .62rem;
+  }
+
+  .hero-main-title {
+    font-size: clamp(2rem, 10vw, 3.2rem);
+  }
+
+  .hero-name-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .hero-date-box {
+    max-width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 8px 12px;
+  }
+
+  .countdown-container {
+    width: 100%;
+    justify-content: center;
+    gap: clamp(6px, 2vw, 12px);
+  }
+
+  .countdown-box {
+    min-width: 0;
+    padding: 9px clamp(8px, 3vw, 14px);
+  }
+
+  .countdown-label {
+    letter-spacing: 1px;
+    font-size: .54rem;
+  }
+
+  .hero-buttons {
+    width: 100%;
+    gap: 9px;
+    margin-bottom: 32px;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    justify-content: center;
+    padding: 11px 14px;
+    font-size: .75rem;
+  }
+
+  .info-card {
+    border-radius: 16px 16px 0 0;
+    padding: 28px 16px 22px;
+  }
+
+  .parent-card,
+  .event-card,
+  .entertain-card {
+    min-width: 0;
+  }
+
+  .schedule-row {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    padding: 12px;
+  }
+
+  .schedule-time {
+    min-width: 0;
+    flex: 1 1 130px;
+  }
+
+  .schedule-name {
+    flex: 1 1 100%;
+    padding-left: 20px;
+  }
+
+  .schedule-name > span:first-child {
+    overflow-wrap: anywhere;
+  }
+
+  .bank-item {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .bank-number {
+    font-size: clamp(.82rem, 4vw, 1rem);
+    letter-spacing: .4px;
+    overflow-wrap: anywhere;
+  }
+
+  .copy-btn {
+    padding: 6px 8px;
+    font-size: .66rem;
+  }
+
+  .attendance-options > * {
+    flex: 1 1 auto;
+  }
+
+  .scroll-top-btn {
+    right: 16px;
+    bottom: 76px;
+  }
+
+  .floating-music {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar-inner {
+    gap: 8px;
+    padding: 0 12px;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo-main {
+    font-size: .72rem;
+  }
+
+  .navbar-right {
+    gap: 6px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-buttons a,
+  .hero-buttons button {
+    width: 100%;
+  }
+
+  .bank-logo {
+    min-width: 38px;
+    padding: 7px;
+  }
+
+  .schedule-group-badge {
+    white-space: normal;
+  }
+}

@@ -1,0 +1,637 @@
+/* ===== GIFT & RSVP SECTION ===== */
+.giftrsvp-section {
+  background: linear-gradient(145deg, #0d4a34 0%, #176d4a 72%, #eaf6ee 150%);
+  padding: 70px 20px 0;
+  position: relative;
+}
+
+.giftrsvp-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* Two-column layout */
+.giftrsvp-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 900px;
+  margin: 36px auto 48px;
+}
+
+/* RSVP Card */
+.rsvp-column, .gift-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.rsvp-card, .gift-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 20px;
+  padding: 28px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rsvp-card-header h3,
+.gift-card-header h3 {
+  font-size: 1.05rem;
+  color: var(--gold-light);
+  margin-bottom: 6px;
+  font-family: 'Playfair Display', serif;
+}
+
+.rsvp-card-header p,
+.gift-card-header p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* Form */
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.78rem;
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--white);
+  font-size: 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s;
+  outline: none;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+
+.form-group select option {
+  background: #1a5c38;
+  color: var(--white);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Attendance buttons */
+.attendance-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.attendance-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(201,168,76,0.25);
+  background: transparent;
+  color: var(--text-light);
+  transition: all 0.3s;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.attendance-btn.active {
+  background: rgba(201,168,76,0.2);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.attendance-btn:hover {
+  border-color: rgba(201,168,76,0.5);
+}
+
+.rsvp-submit-btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+}
+
+/* RSVP Success */
+.rsvp-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 20px 0;
+}
+
+.success-icon {
+  font-size: 3rem;
+}
+
+.rsvp-success h4 {
+  font-size: 1.2rem;
+  color: var(--gold-light);
+}
+
+.rsvp-success p {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* Bank accounts */
+.bank-accounts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bank-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: border-color 0.3s;
+}
+
+.bank-item:hover {
+  border-color: rgba(201,168,76,0.4);
+}
+
+.bank-logo {
+  background: var(--gold);
+  color: var(--green-dark);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 8px 10px;
+  border-radius: 8px;
+  min-width: 44px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.bank-info {
+  flex: 1;
+}
+
+.bank-name {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.bank-number {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 1px;
+  margin-bottom: 1px;
+}
+
+.bank-holder {
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+
+.copy-btn {
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  background: rgba(201,168,76,0.25);
+}
+
+/* Gift address */
+.gift-address {
+  border-top: 1px solid rgba(201,168,76,0.2);
+  padding-top: 16px;
+}
+
+.gift-address h4 {
+  font-size: 0.9rem;
+  color: var(--gold-light);
+  margin-bottom: 6px;
+  font-family: 'Playfair Display', serif;
+}
+
+.gift-address > p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.address-box {
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.address-box p {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.address-box strong {
+  color: var(--gold-light);
+}
+
+/* Closing */
+.giftrsvp-closing {
+  text-align: center;
+  padding: 50px 20px;
+  border-top: 1px solid rgba(201,168,76,0.2);
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.closing-ornament {
+  color: var(--gold);
+  font-size: 1.5rem;
+}
+
+.closing-text {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.8;
+  font-style: italic;
+  max-width: 400px;
+}
+
+.closing-arabic {
+  font-size: 1.4rem;
+  color: var(--gold-light);
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+}
+
+.closing-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.closing-family {
+  margin-top: 10px;
+}
+
+.closing-family p:first-child {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.family-name {
+  font-size: 1.2rem;
+  color: var(--gold-light);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+/* Footer */
+.site-footer {
+  background: rgba(0,0,0,0.3);
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding: 30px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-ornament {
+  margin-bottom: 6px;
+}
+
+.footer-logo {
+  font-size: 2rem;
+}
+
+.footer-brand {
+  font-size: 1rem;
+  color: var(--gold-light);
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.footer-powered {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 1px;
+}
+
+@media (max-width: 700px) {
+  .giftrsvp-container {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}
+
+/* Ucapan doa dan identitas usaha keluarga */
+.giftrsvp-heading {
+  max-width: 760px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.giftrsvp-heading .section-title { margin-bottom: 8px; }
+
+.giftrsvp-intro {
+  color: rgba(255,255,255,.72);
+  font-size: .78rem;
+}
+
+.greeting-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 18px;
+  max-width: 900px;
+  margin: 0 auto 18px;
+}
+
+.greeting-compose,
+.greeting-board {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 16px;
+  background: rgba(7,58,39,.74);
+  box-shadow: 0 12px 28px rgba(4,39,26,.18);
+}
+
+.greeting-card-title,
+.greeting-board-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.greeting-mark,
+.greeting-board-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  color: #e8c870;
+  border-radius: 9px;
+  background: rgba(232,200,112,.14);
+}
+
+.greeting-card-title h3,
+.greeting-board-heading h3 {
+  color: #f3d879;
+  font-size: .9rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.greeting-card-title p,
+.greeting-board-heading p {
+  margin-top: 4px;
+  color: rgba(255,255,255,.68);
+  font-size: .68rem;
+  line-height: 1.6;
+}
+
+.greeting-form { display: flex; flex-direction: column; gap: 14px; }
+.greeting-form .form-group label { color: #f0d776; }
+.greeting-form input,
+.greeting-form textarea {
+  border-color: rgba(255,255,255,.16);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+}
+.greeting-form input::placeholder,
+.greeting-form textarea::placeholder { color: rgba(255,255,255,.48); }
+.greeting-form textarea { resize: vertical; min-height: 92px; }
+.greeting-form .rsvp-submit-btn { color: #174b36; }
+.greeting-form .rsvp-submit-btn:disabled { cursor: wait; opacity: .7; }
+.greeting-status { color: #f0d776; font-size: .68rem; line-height: 1.5; }
+
+.greeting-board-heading {
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+.greeting-board-icon { flex-basis: 30px; width: 30px; height: 30px; font-size: 1.2rem; }
+.greeting-list { display: grid; gap: 10px; max-height: 290px; overflow: auto; }
+.greeting-message {
+  padding: 12px 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+  background: rgba(255,255,255,.07);
+}
+.greeting-message h4 { color: #f3d879; font-size: .76rem; margin-bottom: 4px; }
+.greeting-message p { color: rgba(255,255,255,.8); font-size: .7rem; line-height: 1.65; overflow-wrap: anywhere; }
+.greeting-empty {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: rgba(255,255,255,.68);
+  text-align: center;
+  font-size: .74rem;
+}
+.greeting-empty span { color: #f3d879; font-size: 1.5rem; }
+
+.restaurant-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 14px 18px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 14px;
+  color: #fff;
+  background: linear-gradient(115deg, #07563d, #123f31);
+  box-shadow: 0 -6px 24px rgba(5,53,37,.16);
+}
+.restaurant-card > img {
+  flex: 0 0 58px;
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #fff;
+}
+.restaurant-info { min-width: 0; flex: 1; }
+.restaurant-kicker { color: #c9dbcc; font-size: .55rem; letter-spacing: 1px; text-transform: uppercase; }
+.restaurant-info h3 { color: #f3d879; font-size: .84rem; margin: 2px 0; }
+.restaurant-tagline { color: rgba(255,255,255,.75); font-family: 'Playfair Display', serif; font-size: .68rem; font-style: italic; }
+.restaurant-contact {
+  flex: 0 0 auto;
+  padding: 8px 13px;
+  border-radius: 20px;
+  color: #194d36;
+  background: #f1d36d;
+  font-size: .62rem;
+  font-weight: 700;
+}
+.restaurant-contact:hover { background: #ffe899; }
+
+@media (max-width: 700px) {
+  .greeting-grid { grid-template-columns: 1fr; max-width: 460px; }
+  .greeting-compose, .greeting-board { padding: 18px; }
+  .restaurant-card { max-width: 460px; padding: 12px; gap: 10px; }
+  .restaurant-card > img { flex-basis: 48px; width: 48px; height: 48px; }
+  .restaurant-contact { padding: 8px 10px; font-size: .58rem; }
+}
+
+@media (max-width: 420px) {
+  .restaurant-card { flex-wrap: wrap; }
+  .restaurant-info { flex-basis: calc(100% - 60px); }
+  .restaurant-contact { margin-left: 58px; }
+}
+
+.invitation-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "brand nav" "copy copy";
+  align-items: center;
+  gap: 20px 28px;
+  margin: 18px -20px 0;
+  padding: 26px clamp(20px, 5vw, 64px) 18px;
+  border-top: 1px solid rgba(242, 218, 143, .16);
+  color: rgba(255,255,255,.72);
+  background: linear-gradient(120deg, #073d2d, #0b4935);
+}
+
+.footer-identity {
+  grid-area: brand;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+}
+
+.footer-identity img {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(239,207,95,.45);
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+}
+
+.footer-identity span { display: grid; gap: 3px; }
+.footer-identity strong { color: #f3d879; font: 700 .78rem/1.25 'Playfair Display', serif; }
+.footer-identity small { color: rgba(255,255,255,.58); font-size: .62rem; }
+.footer-links { grid-area: nav; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.footer-links a { padding: 7px 10px; border-radius: 7px; color: rgba(255,255,255,.72); font-size: .66rem; transition: color .2s ease, background .2s ease; }
+.footer-links a:hover { background: rgba(255,255,255,.08); }
+.footer-links a:hover { color: #f3d879; }
+.footer-copyright {
+  grid-area: copy;
+  justify-self: stretch;
+  margin-top: 2px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.52);
+  font-size: .62rem;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .invitation-footer {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "brand" "nav" "copy";
+    justify-items: start;
+    gap: 12px;
+    margin: 14px -16px 0;
+    padding: 21px 82px 19px 20px;
+  }
+  .footer-links { grid-column: 1; grid-row: auto; justify-content: flex-start; gap: 2px; margin-left: -8px; }
+  .footer-copyright { grid-column: 1; grid-row: auto; justify-self: stretch; margin-top: 0; padding-top: 11px; text-align: left; }
+}
+
+@media (max-width: 380px) {
+  .invitation-footer {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    gap: 12px;
+    padding: 21px 82px 19px 20px;
+  }
+  .footer-identity { gap: 9px; }
+  .footer-identity img { flex-basis: 38px; width: 38px; height: 38px; }
+  .footer-identity strong { font-size: .73rem; }
+  .footer-identity small { font-size: .58rem; }
+  .footer-links {
+    grid-column: 1;
+    grid-row: auto;
+    justify-content: flex-start;
+    gap: 8px 14px;
+  }
+  .footer-links a { font-size: .62rem; }
+  .footer-copyright {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: start;
+    text-align: left;
+    font-size: .58rem;
+  }
+}
