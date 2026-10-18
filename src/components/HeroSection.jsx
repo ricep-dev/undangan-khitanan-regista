@@ -125,9 +125,9 @@ const HeroSection = () => {
           <span className="div-ornament">❧</span>
           <span className="div-line"></span>
         </div>
-        <p className="hero-parents-label">Putra / Putri tercinta dari Pasangan</p>
+        <p className="hero-parents-label">Putri tercinta dari Pasangan</p>
         <p className="hero-parents-name">
-          <strong>Bapak AA Sipit</strong> &amp; <strong>Ibu Resi Dayanti</strong>
+          <strong>AA Sipit</strong> &amp; <strong>Ibu Resi Dayanti</strong>
         </p>
       </div>
 
