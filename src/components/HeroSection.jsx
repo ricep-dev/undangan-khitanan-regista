@@ -266,14 +266,11 @@ const InfoCard = () => {
         <h3>Assalamu'alaikum Warahmatullahi Wabarakatuh</h3>
         <p className="info-card-sub">
           Dengan memohon rahmat dan ridho Allah SWT, kami sekeluarga bermaksud menyelenggarakan
-          Syukuran Khitanan putra/putri kami tercinta.
+          Syukuran Khitanan putri kami tercinta.
         </p>
         <h4 className="info-card-name">Regista</h4>
         <p className="info-card-desc">
-          Semoga ananda selalu diberikan kesehatan menjadi pribadi yang sholeh/i cerdas.
-          Kami kepada Allah Swt Tuhan Allahu, berbuat kepada keduanya dengan kebaikan selama
-          hidup di dunia, serta berbagai pergaulan hidup di agama, nusa, dan bangsa. Aamiin Ya
-          Rabbah Aamiin.
+         Semoga Ananda senantiasa diberikan kesehatan, menjadi pribadi yang salehah, cerdas, serta berakhlak mulia. Semoga Ananda selalu berbakti kepada kedua orang tua, senantiasa berbuat baik kepada sesama, serta menjadi pribadi yang bermanfaat bagi agama, nusa, dan bangsa. Aamiin Ya Rabbal ‘Alamiin.
         </p>
       </div>
 
