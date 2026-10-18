@@ -66,21 +66,21 @@ const GuestScheduleSection = () => {
 
 const GuestScheduleUpdated = () => {
   const invitees = [
-    'bpk ajat sudrajat ( orang tua)',
-    'bpk romaya (orang tua)',
-    'bpk haji hendra ( paman)',
-    'bpk ade sukmawijaya (paman)',
-    'bpk agus mulayana ( kakak)',
-    'bpk nuryana ( kakak ipar)',
-    'bpk yayan hendayana st.(Kepala desa cikamunding)',
-    "bpk ma'mun soleh ( mantan kepala desa cikamunding)",
-    'bpk didin Hidayatulloh S.Sy ( penyuluh KUA cilograng)',
-    'bpk hendra ( kepala KUA CILOGRANG)',
-    'bpk syamsul anjar S.Sn ( dalang muda cikamunding)',
-    'bpk dudun nurjaman S.d ( dewan guru Mad Andalusia cilograng)',
-    'bpk Deri Rusmawan S.Pd ( dewan guru SDN 3 Cikamunding)',
-    'bpk mahadar junaedi S.Pd.I. ( dewan guru SMK yasmi cilograng)',
-    'bpk hilah fatahillah S.Pd ( ketua karang taruna kecamatan cilograng)',
+'Bapak Ajat Sudrajat (Orang Tua)',
+'Bapak Romaya (Orang Tua)',
+'Bapak Haji Hendra (Paman)',
+'Bapak Ade Sukmawijaya (Paman)',
+'Bapak Agus Mulayana (Kakak)',
+'Bapak Nuryana (Kakak Ipar)',
+'Bapak Yayan Hendayana, S.T. (Kepala Desa Cikamunding)',
+"Bapak Ma'mun Soleh (Mantan Kepala Desa Cikamunding)",
+'Bapak Didin Hidayatulloh, S.Sy. (Penyuluh KUA Cilograng)',
+'Bapak Hendra (Kepala KUA Cilograng)',
+'Bapak Syamsul Anjar, S.Sn. (Dalang Muda Cikamunding)',
+'Bapak Dudun Nurjaman, S.D. (Dewan Guru MA Andalusia Cilograng)',
+'Bapak Deri Rusmawan, S.Pd. (Dewan Guru SDN 3 Cikamunding)',
+'Bapak Mahadar Junaedi, S.Pd.I. (Dewan Guru SMK Yasmi Cilograng)',
+'Bapak Hilah Fatahillah, S.Pd. (Ketua Karang Taruna Kecamatan Cilograng)',
   ]
 
   return (
