@@ -513,35 +513,49 @@
   right: 22px;
   bottom: 22px;
   z-index: 1000;
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e8ca66;
+  border: 1px solid rgba(248, 221, 133, .9);
   border-radius: 50%;
-  background: #145740;
-  color: #f3d266;
+  background: linear-gradient(145deg, #17634a, #0b392e);
+  color: #f5d77e;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
-  animation: pulse 2s ease-in-out infinite;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  overflow: hidden;
 }
 
 .floating-music:hover {
-  transform: scale(1.08);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .3), 0 0 18px rgba(243, 210, 102, .28);
 }
 
 .floating-music.music-playing {
-  background: #f3d266;
-  color: #145740;
+  background: linear-gradient(145deg, #f4db88, #c89b3c);
+  color: #104633;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, .22), 0 0 0 5px rgba(243, 210, 102, .12);
 }
 
-.music-icon {
-  font-size: 24px;
+.music-record {
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 4px, rgba(20, 87, 64, .14) 4.5px 5px);
+  font-family: Georgia, serif;
+  font-size: 21px;
   line-height: 1;
 }
+
+.music-playing .music-record { animation: musicSpin 5s linear infinite; }
+
+@keyframes musicSpin { to { transform: rotate(360deg); } }
 
 /* ===== SHARED UTILITY (used in multiple sections) ===== */
 .gold-divider {
@@ -726,7 +740,11 @@
   .floating-music {
     right: 15px;
     bottom: 15px;
+    width: 50px;
+    height: 50px;
   }
+
+  .music-record { width: 36px; height: 36px; }
 
   .scroll-top-btn {
     right: 18px;

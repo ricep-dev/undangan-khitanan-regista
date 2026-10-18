@@ -77,7 +77,7 @@ const GuestScheduleUpdated = () => {
 'Bapak Didin Hidayatulloh, S.Sy. (Penyuluh KUA Cilograng)',
 'Bapak Hendra (Kepala KUA Cilograng)',
 'Bapak Syamsul Anjar, S.Sn. (Dalang Muda Cikamunding)',
-'Bapak Dudun Nurjaman, S.D. (Dewan Guru MA Andalusia Cilograng)',
+'Bapak Dudun Nurjaman, S.Pd. (Dewan Guru MA Andalusia Cilograng)',
 'Bapak Deri Rusmawan, S.Pd. (Dewan Guru SDN 3 Cikamunding)',
 'Bapak Mahadar Junaedi, S.Pd.I. (Dewan Guru SMK Yasmi Cilograng)',
 'Bapak Hilah Fatahillah, S.Pd. (Ketua Karang Taruna Kecamatan Cilograng)',

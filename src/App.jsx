@@ -142,6 +142,7 @@ const Mosque = () => (
 function App() {
   const [isOpened, setIsOpened] = useState(false);
   const [isOpening, setIsOpening] = useState(false);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const mainRef = useRef(null);
   const openTimerRef = useRef(null);
@@ -188,6 +189,13 @@ function App() {
     }, reduceMotion ? 0 : 650);
   };
 
+  const toggleInvitationMusic = () => {
+    const audio = invitationMusicRef.current;
+    if (!audio) return;
+    if (audio.paused) audio.play().catch(() => {});
+    else audio.pause();
+  };
+
   // Scroll ke atas
   const scrollToTop = () => {
     window.scrollTo({
@@ -198,7 +206,14 @@ function App() {
 
   return (
     <div className="app">
-      <audio ref={invitationMusicRef} src="/assets/MaherZain.m4a" loop preload="none" />
+      <audio
+        ref={invitationMusicRef}
+        src="/assets/MaherZain.m4a"
+        loop
+        preload="none"
+        onPlay={() => setIsMusicPlaying(true)}
+        onPause={() => setIsMusicPlaying(false)}
+      />
 
       {/* Halaman sampul undangan */}
       {!isOpened && (
@@ -368,6 +383,18 @@ function App() {
           title="Kembali ke atas"
         >
           ↑
+        </button>
+      )}
+
+      {isOpened && (
+        <button
+          type="button"
+          className={`floating-music${isMusicPlaying ? ' music-playing' : ''}`}
+          onClick={toggleInvitationMusic}
+          aria-label={isMusicPlaying ? 'Jeda musik' : 'Putar musik'}
+          title={isMusicPlaying ? 'Jeda musik' : 'Putar musik'}
+        >
+          <span className="music-record" aria-hidden="true">♫</span>
         </button>
       )}
 
