@@ -145,6 +145,7 @@ function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const mainRef = useRef(null);
   const openTimerRef = useRef(null);
+  const invitationMusicRef = useRef(null);
 
   // Nama tamu dari link, contoh: https://domain.com/?to=Bapak+Budi
   const [guestName] = useState(() => {
@@ -174,6 +175,8 @@ function App() {
     if (isOpening) return;
     setIsOpening(true);
 
+    invitationMusicRef.current?.play().catch(() => {});
+
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     openTimerRef.current = setTimeout(() => {
@@ -195,6 +198,7 @@ function App() {
 
   return (
     <div className="app">
+      <audio ref={invitationMusicRef} src="/assets/MaherZain.m4a" loop preload="none" />
 
       {/* Halaman sampul undangan */}
       {!isOpened && (
