@@ -75,7 +75,7 @@ const GuestScheduleUpdated = () => {
 'Bapak Yayan Hendayana, S.T. (Kepala Desa Cikamunding)',
 "Bapak Ma'mun Soleh (Mantan Kepala Desa Cikamunding)",
 'Bapak Didin Hidayatulloh, S.Sy. (Penyuluh KUA Cilograng)',
-'Bapak Hendra (Kepala KUA Cilograng)',
+'Bapak Hendra Mulyadi S.Ag (Kepala KUA Cilograng)',
 'Bapak Syamsul Anjar, S.Sn. (Dalang Muda Cikamunding)',
 'Bapak Dudun Nurjaman, S.Pd. (Dewan Guru MA Andalusia Cilograng)',
 'Bapak Deri Rusmawan, S.Pd. (Dewan Guru SDN 3 Cikamunding)',

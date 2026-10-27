@@ -298,3 +298,5 @@ button {
     white-space: normal;
   }
 }
+
+html, body { overflow-x: hidden; }
