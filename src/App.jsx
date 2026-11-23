@@ -31,7 +31,7 @@ const PARTICLES = Array.from({ length: 14 }, (_, i) => ({
 
 const formatGuestName = (value) => {
   const name = value.trim().slice(0, 60);
-  const locationMatch = name.match(/^(.*?)\s+(?:di\s+)?(ciodeng|cikelat|ganesha|tempat)$/i);
+  const locationMatch = name.match(/^(.*?)\s+(?:di\s+)?(ciodeng|cikelat|ganesha|Tempat)$/i);
 
   if (!locationMatch) return name || 'Tamu Undangan';
 
