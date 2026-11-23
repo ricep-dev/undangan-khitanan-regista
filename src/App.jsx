@@ -29,6 +29,16 @@ const PARTICLES = Array.from({ length: 14 }, (_, i) => ({
   drift: (i % 2 ? 1 : -1) * (12 + (i % 4) * 9),
 }));
 
+const formatGuestName = (value) => {
+  const name = value.trim().slice(0, 60);
+  const locationMatch = name.match(/^(.*?)\s+(?:di\s+)?(ciodeng|cikelat|ganesha|tempat)$/i);
+
+  if (!locationMatch) return name || 'Tamu Undangan';
+
+  const [, guest, location] = locationMatch;
+  return `${guest.trim()}\ndi\n${location}`;
+};
+
 /* ---------- Komponen dekorasi kecil ---------- */
 
 // Lampion (fanous) yang berayun
@@ -151,8 +161,7 @@ function App() {
   // Nama tamu dari link, contoh: https://domain.com/?to=Bapak+Budi
   const [guestName] = useState(() => {
     const raw = new URLSearchParams(window.location.search).get('to');
-    const name = raw ? raw.trim().slice(0, 60) : '';
-    return name || 'Tamu Undangan';
+    return formatGuestName(raw || '');
   });
 
   // Menampilkan tombol scroll-to-top
