@@ -36,7 +36,8 @@ const formatGuestName = (value) => {
   if (!locationMatch) return name || 'Tamu Undangan';
 
   const [, guest, location] = locationMatch;
-  return `${guest.trim()}\ndi\n${location}`;
+  const formattedLocation = `${location[0].toUpperCase()}${location.slice(1).toLowerCase()}`;
+  return `${guest.trim()}\ndi\n${formattedLocation}`;
 };
 
 /* ---------- Komponen dekorasi kecil ---------- */
